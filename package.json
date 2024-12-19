@@ -1,10 +1,14 @@
 {
   "name": "mypractice",
   "version": "0.0.0",
+  "homepage": "https://pratham25012003.github.io/hadapmartFrontend",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist/mypractice", 
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ",
+    "type":"module",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -18,6 +22,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "gh-pages": "^6.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
