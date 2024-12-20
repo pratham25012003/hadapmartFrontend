@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="row">
+        <!-- Loop through products -->
+        <div *ngFor="let product of products" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <!-- Card -->
+            <div class="card h-100" style="border: 1px solid #ddd; border-radius: 8px;">
+                <!-- Discount Badge -->
+                <div class="position-absolute" style="top: 10px; left: 10px;">
+                    <span class="badge bg-success">20% OFF</span>
+                </div>
+
+                <!-- Product Image -->
+                <img src="{{product.image}}" class="card-img-top" alt="{{product.name}}" 
+                     style="padding: 10px; height: 200px; object-fit: contain;">
+
+                <!-- Card Body -->
+                <div class="card-body d-flex flex-column">
+                    <!-- Sponsored Tag -->
+                    <span class="text-muted small mb-1">
+                        <img src="https://img.icons8.com/color/16/000000/advertising.png" alt="Sponsored"/> Sponsored
+                    </span>
+
+                    <!-- Title -->
+                    <h6 class="text-muted">fresho!</h6>
+                    <h5 class="card-title fw-bold">{{product.name}}</h5>
+
+                    <!-- Dropdown for weight selection -->
+                    <select class="form-select form-select-sm mb-2" aria-label="Select weight">
+                        <option selected>500 g</option>
+                        <option value="1">1 kg</option>
+                        <option value="2">2 kg</option>
+                    </select>
+
+                    <!-- Price Section -->
+                    <div class="d-flex align-items-center mb-3">
+                        <h5 class="fw-bold text-success mb-0 me-2">₹{{product.price}}</h5>
+                        <span class="text-muted text-decoration-line-through">₹{{product.price}}</span>
+                    </div>
+
+                    <!-- Add Button (flex-grow ensures it stays at the bottom) -->
+                    <button class="btn btn-outline-danger mt-auto w-100" (click)="addToCart(product)" >Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

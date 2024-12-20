@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <h1 class="text-center text-success mb-4">Shopping Cart</h1>
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div class="row align-items-center mb-3" style="border: 1px solid #ddd; border-radius: 8px;" *ngFor="let item of cartItems">
+        <div class="col-3">
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+            class="img-fluid rounded border"
+            style="height: 100px; object-fit: cover;"
+          />
+        </div>
+        <div class="col-9">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="text-truncate m-0 text-success">{{ item.name }}</h5>
+            <button
+              class="btn btn-outline-success btn-sm"
+              (click)="removeItem(item._id)"
+              title="Remove item"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+          <p class="text-success font-weight-bold m-0">₹{{ item.price }}</p>
+          <div class="d-flex align-items-center mt-2">
+            <button
+              class="btn btn-success btn-sm"
+              (click)="decreaseQuantity(item)"
+              [disabled]="item.quantity <= 1"
+            >
+              -
+            </button>
+            <span class="mx-2 font-weight-bold text-success">
+              {{ item.quantity }}
+            </span>
+            <button class="btn btn-success btn-sm" (click)="increaseQuantity(item)">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #emptyCart>
+      <p class="text-center text-muted">Your cart is empty.</p>
+    </ng-template>
+  
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <button class="btn btn-outline-success" (click)="navigate('continueShopping')" >Continue Shopping</button>
+      <button class="btn btn-success">Go to Basket</button>
+    </div>
+    <app-footer></app-footer>
+  </div>
+  
