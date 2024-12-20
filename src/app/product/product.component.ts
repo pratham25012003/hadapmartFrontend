@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { CartService } from '../cart.service';
+import { ToastrService } from 'ngx-toastr';
 // import { Component, OnInit } from '@angular/core';
 // import { ProductService } from './product.service';
 
@@ -16,7 +17,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private addToCartService:CartService
+    private CartService:CartService,
+    private toaster:ToastrService
   ){
     this.productService.getAllProducts().subscribe(
       (response) =>{
@@ -35,9 +37,21 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     
   }
+  
+  // addToCart(product:any){
+  //   this.addToCartService.addToCart(product)
+  //   // this.toaster.success("Product Added In Cart")
+  // }
 
-  addToCart(product:any){
-    this.addToCartService.addToCart(product)
+   // Toggle item in the cart
+   toggleCart(product: any): void {
+    this.CartService.addToCart(product); // Already handles add/remove logic
+  }
+
+  // Check if item is in the cart
+  isInCart(productId: string): boolean {
+    const cartItems = this.CartService.getCartItems();
+    return cartItems.some(item => item._id === productId);
   }
 
 }

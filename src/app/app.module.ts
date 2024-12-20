@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +12,12 @@ import { CartComponent } from './coponents/cart/cart.component';
 import { FooterComponent } from './coponents/footer/footer.component';
 import { AboutComponent } from './coponents/about/about.component';
 import { ContactPageComponent } from './coponents/contact-page/contact-page.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // BrowserAnimationsModule,
     CartComponent,
     ProductComponent,
     FooterComponent,
@@ -23,9 +27,15 @@ import { ContactPageComponent } from './coponents/contact-page/contact-page.comp
   ],
   imports: [
     BrowserModule,
+    
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,         // Duration in milliseconds
+      positionClass: 'toast-top-right', // Position of the toast
+      preventDuplicates: true,  // Avoid duplicate messages
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
