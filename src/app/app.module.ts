@@ -13,6 +13,7 @@ import { FooterComponent } from './coponents/footer/footer.component';
 import { AboutComponent } from './coponents/about/about.component';
 import { ContactPageComponent } from './coponents/contact-page/contact-page.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
-    
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
