@@ -11,7 +11,7 @@ const routes: Routes = [
     component:CartComponent
   },
   {
-    path:'product',
+    path:'',
     component:ProductComponent
   },
   {
